@@ -20,4 +20,5 @@ struct Direction {
     var choice_one: String
     var choice_two: String
     var answer: String
+    
 }

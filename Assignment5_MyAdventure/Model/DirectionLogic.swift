@@ -31,7 +31,6 @@ struct DirectionLogic {
                   "Left")
     ]
     
-    
     mutating func compareUserResponse(_ response: String) -> Bool {
         if response == direction[directionIndex].answer {
             score += 1
@@ -41,7 +40,30 @@ struct DirectionLogic {
         }
     }
     
+    mutating func NextQuestion() {
+        if directionIndex < direction.count {
+            directionIndex += 1
+        }
+    }
     
+    func isFinished() -> Bool {
+        return directionIndex + 1 >= direction.count
+    }
+    
+    func getResultMessage() -> String {
+        if score >= 3 {
+            return "Congratulations! 🥳 You have chosen the path to sucessfully exit the maze."
+        }
+        else {
+            return "Sorry, you have failed to navigate out of the maze. 🙁 Try again."
+        }
+    }
+    
+    mutating func reset() {
+        score = 0
+        directionIndex = 0
+    }
+        
     func getScore() -> Int {
         return score
     }
@@ -57,6 +79,7 @@ struct DirectionLogic {
     func getChoiceTwo() -> String {
         return direction[directionIndex].choice_two
     }
+    
     
 }
 
